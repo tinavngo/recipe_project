@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpe
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://git.heroku.com/cinematflicks-angular-client.git']
+ALLOWED_HOSTS = ['https://git.heroku.com/ghostly-fangs-31914.git']
 
 # Application definition
 
