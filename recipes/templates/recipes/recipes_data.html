@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Concert+One&family=Pacifico&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <title>Recipes Data</title>
+    </head>
+    <body class="elongated-view">
+
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">RecipMe</div>
+            <div class="toggle-button" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="menu">
+                <a href="{% url 'recipes:list' %}">Recipes</a>
+                <a href="{% url 'recipes:data' %}">Collection Data</a>
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main>
+            <div class="list-flex-container">
+                <div class="welcome-container">
+                    <div class="recipe-container">
+                        <h2 class="main-header-data text-center">Collection Data</h2>
+
+                        <!-- DATA CONTENT -->
+                        <div class="container">
+                            <!-- Sidebar for graph selection -->
+
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit">Generate Chart</button>
+                            </form>
+                            <!-- Actual Graph -->
+                            <div class="chart-container">
+                                {% if chart %}
+                                    <img src="data:image/png;base64,{{ chart }}" alt="Recipe Chart" class="img-fluid">
+                                {% else %}
+                                    <p>No chart generated.</p>
+                                {% endif %}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+          <!-- Bootstrap JavaScript libraries -->
+          <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     
+
+        </body>
+    </html>

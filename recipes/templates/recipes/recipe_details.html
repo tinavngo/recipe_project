@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Concert+One&family=Pacifico&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <title>{{object.name}} Details</title>
+    </head>
+    <body class="compact-view">
+        <div class="details-flex-container">
+            <a href="{%url 'logout' %}" class="logout-button">Logout</a>
+            <div class="centered-div">
+                    <div class="recipes-container-details">
+                        <div class="top-details-holder">
+                            <h2 class="details-header">{{object.name}}</h2>
+                            <img src="{{object.pic.url}}" class="recipe-image-details" />
+                        </div>
+                        <div class="description-holder">
+                            <p class="details-description">{{object.description}}</p>
+                        </div>
+                        <div class="ingredients-details">
+                            <p class="ingredients-details-list"><span class="sub-header">Ingredients:
+                                </span>{{object.ingredients}}</p>
+                        </div>
+                        <div class="time-and-difficulty">
+                            <p class="sub-header-1"><span class="sub-header">Cooking Time: </span>{{object.cooking_time}} mins</p>
+                            <br/>
+                            <p><span class="sub-header">Difficulty: </span>{{object.difficulty}}</p>
+                        </div>
+                        <div class="details-button-holder">
+                            <a href="{% url 'recipes:list' %}" class="back-button">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+</html>

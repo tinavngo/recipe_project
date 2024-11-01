@@ -1,0 +1,619 @@
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('../images/kitchen.jpg');
+    background-size: cover; /* Adjusts image to cover the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    z-index: -1;
+    height: 98vh;
+}
+
+body.elongated-view {
+    min-height: 150vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.842);
+    color: beige;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    font-size: 40px;
+    transform: translateX(20%);
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar .menu a {
+    border-radius: 5px;
+    color: beige;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 600;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    transition: 0.3s all ease-in-out;
+}
+
+.navbar .menu a:hover {
+    background-color: beige;
+    border: 3px solid rgba(3, 105, 3, 0.308);
+    text-decoration: none;
+    color: black;
+}
+
+/* Toggle Button Styles */
+.toggle-button {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.toggle-button div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px;
+}
+
+        /* Responsive Styles */
+@media (max-width: 768px) {
+.navbar .menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.navbar .menu.active {
+    display: flex;
+}
+
+.toggle-button {
+    display: flex;
+}
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+/* Search Styling */
+.search-text {
+    color: beige;
+    background-color: #333;
+    width: 400px;
+    border-radius: 10px;
+    border: 2px solid rgba(29, 28, 28, 0.596);
+    font-weight: 600;
+}
+
+.search-form input {
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-button {
+    background-color: #333;
+    color: beige;
+    font-style: italic;
+    font-size: 15px;
+    margin-right: 10px;
+    text-align: center;
+    transition: 0.2s all ease-in-out;
+    border-radius: 5px;
+}
+
+.search-button:hover {
+    background-color: rgba(245, 245, 220, 0.432);
+    text-decoration: none;
+    color: beige;
+}
+
+/* Center container */
+.welcome-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 98.4vh; /* Takes full viewport height for vertical centering */
+    width: 600px;
+    border-radius: 10px;
+}
+
+.login-container {
+    background-color: white;
+    width: 900px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border-color: rgba(3, 105, 3, 0.308);
+    border: 3px 3px 3px;
+    border-style: solid;
+}
+
+.logout-container {
+    background-color: white;
+    width: 900px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border-color: rgba(3, 105, 3, 0.308);
+    border: 3px 3px 3px;
+    border-style: solid;
+}
+
+.logout-header {
+    color: white;
+    font-style: italic;
+    text-shadow: 3px 3px 3px rgba(13, 189, 13, 0.473);
+}
+
+.intro-1 {
+    transform: translateY(-30%);
+    margin: 2%;
+    padding: 40px;
+    font-weight: 500;
+}
+
+.intro-2 {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-size: xx-large;
+    color: gray;
+}
+
+.login-form {
+    top: 50%; /* Center vertically */
+    transform: translateY(-20%); /* Adjust for vertical centering */
+    width: 300px; /* Adjust as needed */
+    background-color: beige;
+    padding: 20px;
+    border: 2px solid rgba(3, 105, 3, 0.308);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-header {
+    font-family: "Montserrat", cursive;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.home-title {
+    text-align: center;
+    color: white;
+    font-weight: 800;
+    font-size: 40px;
+    background-color: rgba(255, 255, 255, 0.151);
+    padding: 20px 20px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    width: 600px;
+    z-index: 1;
+}
+
+.username-field {
+    margin: 3%;
+}
+
+.submit-button-1 {
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: aliceblue;
+    border-color: white;
+    outline: none;
+    transition: all 0.25s ease; /* Smooth transition for all properties */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    height: 100px;
+    width: 250px;
+    font-size: 20px;
+    border:solid rgba(13, 175, 13, 0.644);
+}
+
+.submit-button-1:hover {
+    cursor: pointer;
+    background-color: rgba(0, 128, 0, 0.644);
+    transform: scale(1.025);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.603);
+}
+
+.submit-button {
+    background-color: green;
+    padding: 5px 20px;
+    border-radius: 4px;
+    color: aliceblue;
+    border-color: white;
+    outline: none;
+    transition: all 0.25s ease; /* Smooth transition for all properties */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.submit-button:hover {
+    outline: 2px solid white; /* White outline on focus as well, for accessibility */
+    cursor: pointer;
+    background-color: rgba(0, 128, 0, 0.644);
+}
+
+
+/**
+*
+* RECIPE COLLECTION PAGE
+*
+**/
+
+.logout-button-onlist {
+    background-color: beige;
+    border: 2px solid rgba(3, 105, 3, 0.308);
+    border-radius: 10px;
+    color: black;
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    height: 100px;
+    width: 200px;
+    align-items: center;
+}
+
+.logout-button {
+    transform: translateX(800%);
+    position: absolute;
+    background-color: beige;
+    padding: 10px 20px;
+    border: 2px solid rgba(3, 105, 3, 0.308);
+    border-radius: 10px;
+    color: black;
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 45%;
+    text-decoration: none;
+}
+
+.main-header {
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    color: rgba(0, 82, 0, 0.644);
+    font-weight: 600;
+    font-size: 40px;
+    background-color: beige;
+    padding: 20px 20px;
+    border: 2px solid rgba(2, 77, 2, 0.308);
+    border-radius: 10px;
+    width: 550px;
+    z-index: 1;
+    margin-bottom: 20px;
+}
+
+.list-flex-container {
+    height: 200vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.recipe-list-container {
+    width: 100%;
+}
+
+.custom-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 2000px; /* Use percentage for flexibility */
+  }
+  
+  .recipe-card {
+    flex: 1 1 calc(33.333% - 40px); 
+    justify-content: center;
+    width: 100%; /* Let the card width adapt to grid cell */
+    background-color: beige;
+    padding: 20px;
+    border: 3px solid rgba(3, 105, 3, 0.308);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* For absolute positioning of description */
+    transition: transform 0.3s ease; /* Optional scaling on hover */
+    height: 400px;
+  }
+  
+
+.recipe-card:hover {
+    transform: scale(1.05); /* Optional scaling effect on hover */
+}
+
+.recipe-card img {
+    border-radius: 10px;
+    border: 3px solid rgba(3, 105, 3, 0.308);
+    object-fit: cover;
+    width: 100%; /* Ensure the image fits the card width */
+    height: 285px;
+}  
+
+.description-container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(245, 245, 220, 0.904);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Add padding for better spacing inside the container */
+}  
+
+.recipe-card:hover .description-container {
+    opacity: 1; /* Show on hover */
+}
+
+.recipe-container {
+    max-width: 1200px;
+    transform: translateY(-70%);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.desc-link {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    color: black;
+    text-decoration: underline;
+    justify-content: baseline;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.description-field {
+    margin-bottom: 2%;
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    color: gray;
+    font-size: 35px;
+}
+
+.desc-text {
+    margin: 2%;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.recipe-link {
+    margin-top: 10px;
+    color: black;
+    font-weight: 600;
+    font-size: 30px;
+    font-family: "Caveat", cursive;
+    font-style: normal;
+}
+
+@media (max-width: 576px) {
+    .custom-grid {
+        grid-template-columns: 1fr; /* 1 column on extra small screens */
+    }
+}
+
+/**
+*
+* RECIPE DETAILS PAGE
+*
+**/
+
+.details-flex-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.recipes-container-details {
+    background-color: beige;
+    max-width: 1000px;
+    border-radius: 10px;
+    padding: 5%;
+    flex-direction: column;
+    padding-left: 21%;
+    border: 2px solid rgba(0, 128, 0, 0.644)
+}
+
+.time-and-difficulty {
+    width: 75%;
+    display: flex;
+    font-family: "Montserrat", sans-serif;
+    color: rgba(2, 51, 2, 0.76);
+}
+.ingredients-details {
+    width: 75%;
+    padding: 10px;
+    color: rgba(2, 51, 2, 0.76);
+}
+.ingredients-details-list {
+    font-family: "Montserrat", sans-serif;
+    color: rgba(2, 51, 2, 0.76);
+}
+.sub-header-1 {
+    padding-left: 20%;
+    margin-right: 10%;
+}
+.sub-header {
+    font-weight: 600;
+    color: rgb(31, 75, 75);
+    color: rgba(2, 51, 2, 0.76);
+}
+.description-holder {
+    width: 75%;
+    padding: 10px;
+}
+
+.top-details-holder {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top-details-holder img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border: 2px solid rgba(0, 128, 0, 0.644);
+    border-radius: 20px;
+    display: block;
+    margin-bottom: 15px;
+}
+.details-description {
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: rgba(2, 51, 2, 0.76);
+}
+.details-header {
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    font-size: 55px;
+    font-optical-sizing: auto;
+    color: rgba(0, 128, 0, 0.644);
+    padding-bottom: 10px;
+}
+.details-button-holder {
+    margin-top: 20px;
+    width: 555px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button {
+    width: 25%;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 128, 0, 0.644);
+    background-color: rgba(0, 128, 0, 0.644);
+    color: rgb(230, 230, 230);
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    margin-left: 2%;
+    transition: all 0.25s ease;
+}
+.back-button:hover {
+    background-color: rgb(15, 36, 36);
+    cursor: pointer;
+}
+
+/* DATA STYLING */
+
+.main-header-data {
+    font-family: "Concert One", sans-serif;
+    font-style: italic;
+    color: rgba(0, 82, 0, 0.644);
+    font-weight: 600;
+    font-size: 40px;
+    background-color: beige;
+    padding: 20px 20px;
+    border: 2px solid rgba(2, 77, 2, 0.308);
+    border-radius: 10px;
+    width: 450px;
+    z-index: 1;
+    margin-bottom: 40px;
+}
+
+/* Container styling */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 300px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar h2 {
+    margin-bottom: 1rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #34495e;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.sidebar li:hover {
+    background-color: #1abc9c;
+}
+
+/* Main content styling */
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 600px;
+}

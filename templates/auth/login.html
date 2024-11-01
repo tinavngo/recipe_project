@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <title>Recipes Home</title>
+    </head>
+
+    <body class="compact-view">
+        <div class="flex-container">
+            <div class="center-div">
+
+                <div class="welcome-container">
+                    <h1 class="home-title">Welcome to RecipeMe</h1>
+                    <div class="login-container">
+                        <p class="intro-1"><span class="intro-2">Let's talk recipes!  </span> RecipeMe is your personal recipe collection, where you can create,
+                             organize, and share your favorite recipes. Whether you're an experienced cook or just starting out,
+                             RecipeMe makes it easy to keep track of all your delicious ideas.</p>
+
+                        <div class="login-form">
+                            <p class="login-welcome">Login to start</p>
+                            <!-- Error message display -->
+                            {% if error_message %}
+                            <p class="error">{{ error_message }}</p>
+                            {% endif %}
+                            
+                            <!-- LOGIN FORM -->
+                            <form action="{% url 'login' %}" method="POST" class="login">
+                                {% csrf_token %}
+                                <div class="username-field">
+                                    <img src="{% static 'images/user.svg' %}" class="login-icon" />
+                                    {{ form.username }}
+                                </div>
+                                <div class="username-field">
+                                    <img src="{% static 'images/lock.svg' %}" class="login-icon" />
+                                    {{ form.password }}
+                                </div>
+                                <br/>
+                                <button type="submit" class="submit-button">Login</button>
+                            </form>
+                        </div>
+                        <p class="dont-have-account">Don't have an account? <a href="#" id="registerLink">Register here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    </body>
+
+</html>
