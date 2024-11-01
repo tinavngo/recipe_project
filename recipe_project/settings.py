@@ -95,9 +95,9 @@ USE_TZ = True
 LOGIN_URL = '/login/'
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'))
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
 django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
