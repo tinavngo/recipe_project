@@ -2,15 +2,16 @@ import dj_database_url
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['ghostly-fangs-31914.herokuapp.com']
+ALLOWED_HOSTS = ['ghostly-fangs-31914.herokuapp.com', "127.0.0.1"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -56,9 +57,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'recipe_project.wsgi.application'
 
 # Database Configuration
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600, ssl_require=True)
-} if os.environ.get('DATABASE_URL') else {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
@@ -120,3 +122,8 @@ LOGGING = {
         },
     },
 }
+
+# Heroku: Update database configuration from $DATABASE_URL.
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
