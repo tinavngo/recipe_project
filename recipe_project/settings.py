@@ -2,7 +2,10 @@ import dj_database_url
 from pathlib import Path
 import os
 import django_heroku
+import environ
 
+# Initialize environ
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -63,11 +66,9 @@ WSGI_APPLICATION = 'recipe_project.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')),
-        conn_max_age=600
-    )
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=500),
 }
+
 
 
 # Password validation
@@ -99,7 +100,6 @@ LOGIN_URL = '/login/'
 STATIC_URL = 'static/'
 STATIC_ROOT=os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)
-django_heroku.settings(locals())
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -129,6 +129,4 @@ LOGGING = {
 }
 
 # Heroku: Update database configuration from $DATABASE_URL.
-# import dj_database_url
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+django_heroku.settings(locals())
