@@ -51,6 +51,44 @@
                         <p class="dont-have-account">Don't have an account? <a href="#" id="registerLink">Register here</a>
                         </p>
                     </div>
+
+                    <!-- Register Modal -->
+                    <div id="registerModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Register</h2>
+                            <form method="post" action="{% url 'register' %}">
+                                {% csrf_token %}
+                                <!-- Username Field -->
+                                <div class="form-group">
+                                    <label for="id_username">Username</label>
+                                    {{ register_form.username }}
+                                    <small class="form-text text-muted">{{ register_form.username.help_text }}</small>
+                                </div>
+                                <!-- Password Field -->
+                                <div class="form-group">
+                                    <label for="id_password1">Password</label>
+                                    {{ register_form.password1 }}
+                                    <small class="form-text text-muted">{{ register_form.password1.help_text }}</small>
+                                </div>
+                                
+                                <!-- Password Confirmation Field -->
+                                <div class="form-group">
+                                    <label for="id_password2">Confirm Password</label>
+                                    {{ register_form.password2 }}
+                                    <small class="form-text text-muted">{{ register_form.password2.help_text }}</small>
+                                </div>
+
+                                <button type="submit" class="submit-button btn">Register</button>
+                            </form>
+                        </div>
+                        {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+
                 </div>
             </div>
         </div>
