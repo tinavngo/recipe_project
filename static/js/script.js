@@ -19,10 +19,20 @@ closeModalButton.onclick = function() {
     modal.style.display = "none";
 }
 
-
 // Close modal when clicking outside the modal content
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+
+// Make sure the search input is always visible
+document.getElementById("searchInput").style.display = "block"; // or 'inline-block'
+
+// Use jQuery to hide the modal after a successful form submission
+$(document).ready(function() {
+    $('form').on('submit', function() {
+        $('#addRecipeModal').modal('hide');  // Hide the modal
+    });
+});
+

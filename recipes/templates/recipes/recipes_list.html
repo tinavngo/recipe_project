@@ -16,7 +16,61 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <title>Recipes List</title>
     </head>
+
+
+
+    
     <body class="elongated-view">
+                <!-- ADD NEW RECIPE MODAL -->
+<!-- ADD NEW RECIPE MODAL -->
+<div class="modal fade" id="addRecipeModal" tabindex="-1" role="dialog" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRecipeModalLabel">Add a New Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <!-- NEW RECIPE FORM -->
+            <div class="modal-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group"> 
+                        <label for="recipe-name">Recipe Name</label> 
+                        <input type="text" class="form-control" id="recipe-name" name="recipe_name" required> 
+                    </div>
+                    <div class="form-group"> <label for="ingredients">Ingredients</label>
+                        <input type="text" class="form-control" id="ingredients" name="ingredients" required>
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="cooking-time">Cooking Time (minutes)</label> 
+                        <input type="number" class="form-control" id="cooking-time" name="cooking_time" required> 
+                    </div> 
+                    <div class="form-group"> 
+                        <label for="description">Description</label> 
+                        <textarea class="form-control" id="description" name="description" rows="3" required></textarea> 
+                    </div>
+                    <div class="form-group">
+                        <label for="pic">Recipe Image</label>
+                        <input type="file" class="form-control" id="pic" name="pic">
+                    </div>
+                    
+                    <button type="submit">Add Recipe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+            <!-- NOTIFY USER SUCCESS-->
+            {% if messages %}
+            {% for message in messages %}
+                {% if request.path == '/' %}
+                <div class="alert alert-success">{{ message }}</div>
+                {% endif %}
+            {% endfor %}
+            {% endif %}
+</div>
 
         <!-- Navbar -->
         <div class="navbar">
@@ -27,7 +81,10 @@
                 <div></div>
             </div>
             <div class="menu">
-                <a href="{% url 'recipes:list' %}">Recipes</a>
+                <!-- Add Recipe Link -->
+                <a href="#" id="addRecipeLink" data-toggle="modal" data-target="#addRecipeModal">Add Recipe</a>
+                <div style="border-left: 2px solid rgba(245, 245, 220, 0.578); height: auto; margin: 0 10px;"></div>
+                <a href="{% url 'recipes:list' %}">Menu</a>
                 <a href="{% url 'recipes:data' %}">Collection Data</a>
                 <a href="{% url 'logout' %}">Logout</a>
             </div>
@@ -42,17 +99,21 @@
 
                         <!-- SEARCH CONTENT -->
                         <p class="search-text">Filter by ingredient or recipe name:</p>
-                        <form class="search-form" action="" method="GET">
+                        <form class="search-form" action="{% url 'recipes:list' %}" method="GET">
                             {% csrf_token %}
                             {{ form.recipe_name }}
-                            <button class="search-button" type="submit">Search</button>
-                            <a href="{% url 'recipes:list' %}">
-                                <button class="search-button" type="button">Show all</button>
+                            <br/>
+                            <button class="search-button" type="submit">Click to Search</button>
+                            <!-- 'Show all' button: Reset the form and return to the list page -->
+                             <a href="{% url 'recipes:list' %}">
+                            <button class="search-button" type="button">Show all</button>
                             </a>
                         </form>
+
                         {% if form.is_bound and form.cleaned_data.recipe_name %}
                             <p>You searched for: {{ form.cleaned_data.recipe_name }}</p>
                         {% endif %}
+
                         {% if object_list %}
 
                             <!-- RECIPE CONTENT -->
@@ -81,7 +142,7 @@
                                 </div>
                             </div>
                         {% else %}
-                            <p>No recipes found for your search criteria.</p>
+                            <p class="no-rcp">No recipes found for your search criteria.</p>
                         {% endif %}
                     </div>
                 </div>
@@ -92,7 +153,5 @@
           <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-     
-
         </body>
     </html>

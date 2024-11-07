@@ -3,9 +3,9 @@ html, body {
     background-image: url('../images/kitchen.jpg');
     background-size: cover; /* Adjusts image to cover the entire background */
     background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-repeat: repeat-y; /* Prevents the image from repeating */
     z-index: -1;
-    height: 98vh;
+    height: 150vh;
 }
 
 body.elongated-view {
@@ -103,7 +103,7 @@ body.elongated-view {
 .search-text {
     color: beige;
     background-color: #333;
-    width: 400px;
+    max-width: 400px;
     border-radius: 10px;
     border: 2px solid rgba(29, 28, 28, 0.596);
     font-weight: 600;
@@ -113,6 +113,7 @@ body.elongated-view {
     display: block; /* Ensures the form is displayed */
     border-radius: 5px;
     margin-right: 10px;
+    z-index: 1000;
 }
 
 .search-button {
@@ -701,3 +702,7 @@ body.elongated-view {
     color: beige;
 }
 
+/* CHART STYLING */
+chart-container p{
+    color: beige;
+}

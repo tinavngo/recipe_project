@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Recipe
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,17 +7,15 @@ from .forms import RecipesSearchForm, RecipeDataForm
 from .utils import get_recipe_name, get_chart
 from django.db.models import Q
 import pandas as pd
+from .forms import RecipeForm
+from django.contrib import messages
+
 
 # Create your views here.
 @login_required
 def home(request):
     return render(request, 'recipes/recipes_home.html')
 
-# View for recipe lists, login required
-from django.db.models import Q
-from django.views.generic import ListView
-from .models import Recipe
-from .forms import RecipesSearchForm  # Ensure you import your form
 
 class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
@@ -45,6 +43,18 @@ class RecipeListView(LoginRequiredMixin, ListView):
         context['form'] = RecipesSearchForm(self.request.GET or None)  # Keep the submitted form data
         return context
 
+    def post(self, request, *args, **kwargs):
+        # Handle the form for adding a recipe when the form is submitted via POST
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Recipe added successfully!")
+            return redirect('recipes:list')  # Redirect after successful submission
+        else:
+            messages.error(request, "Error adding recipe. Please check the form for errors.")
+        
+        # If the form is not valid, render the list view with the errors
+        return self.get(request, *args, **kwargs)
 
 
 # View for recipe lists, login required
@@ -90,3 +100,21 @@ class RecipeDataView(LoginRequiredMixin, ListView):
             'chart': chart,  # Pass chart to template
         }
         return render(request, 'recipes/recipes_data.html', context)
+    
+
+# Add Recipe view
+def add_recipe(request):
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Recipe added successfully!")
+            return redirect('recipes:list')
+        else:
+            messages.error(request, "Error adding recipe. Please check the form for errors.")
+    else:
+        form = RecipeForm()
+    
+    return render(request, 'recipes/add_recipe.html', {'form': form})
+
+
