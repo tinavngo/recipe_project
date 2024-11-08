@@ -5,11 +5,14 @@ html, body {
     background-position: center; /* Centers the image */
     background-repeat: repeat-y; /* Prevents the image from repeating */
     z-index: -1;
-    height: 150vh;
 }
 
 body.elongated-view {
     min-height: 150vh;
+}
+
+body.compact-view {
+    max-height: 100vh;
 }
 
 /* Navbar Styles */
@@ -571,6 +574,34 @@ body.elongated-view {
 .container {
     display: flex;
     height: 100vh;
+    background-color: beige;
+    border-radius: 10px;
+    border: 2px solid rgba(2, 77, 2, 0.308);
+    min-width: 800px;
+    padding: 20%;
+    max-height: 600px;
+}
+
+.container button{
+    background-color: green;
+    border-radius: 5px;
+    color: aliceblue;
+    border-color: white;
+    outline: none;
+    margin-top: 10px;
+}
+
+.chart-selection {
+    padding-top: 10%;
+    margin-right: 5%;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.container img{
+    border-radius: 10px;
+    border: 2px solid rgba(2, 77, 2, 0.308);
 }
 
 /* Sidebar styling */

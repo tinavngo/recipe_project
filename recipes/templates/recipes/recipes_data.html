@@ -44,7 +44,7 @@
                         <div class="container">
                             <!-- Sidebar for graph selection -->
 
-                            <form method="post">
+                            <form method="post" class="chart-selection">
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <button type="submit">Generate Chart</button>
