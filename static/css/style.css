@@ -571,7 +571,7 @@ body.compact-view {
 }
 
 /* Container styling */
-.container {
+.dt-contain {
     display: flex;
     height: 100vh;
     background-color: beige;
@@ -582,7 +582,7 @@ body.compact-view {
     max-height: 600px;
 }
 
-.container button{
+.dt-contain button{
     background-color: green;
     border-radius: 5px;
     color: aliceblue;
@@ -599,7 +599,7 @@ body.compact-view {
     font-weight: 600;
 }
 
-.container img{
+.dt-contain img{
     border-radius: 10px;
     border: 2px solid rgba(2, 77, 2, 0.308);
 }
