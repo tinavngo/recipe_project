@@ -9,7 +9,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-ml49cp(e)=yakpe
 
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
 
-ALLOWED_HOSTS = ['ghostly-fangs-31914.herokuapp.com', "127.0.0.1"]
+ALLOWED_HOSTS = ['ghostly-fangs-31914.herokuapp.com', "127.0.0.1", "ghostly-fangs-31914-5bddee25b209.herokuapp.com"]
 
 # Application definition
 INSTALLED_APPS = [
